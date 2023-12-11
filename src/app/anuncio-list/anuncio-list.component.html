@@ -1,0 +1,42 @@
+<!-- anuncio-list.component.html -->
+<div class="container mt-4">
+    <h2>Lista de Anúncios</h2>
+  
+    <!-- Filtro -->
+    <div class="mb-3">
+      <label for="filtroTitulo" class="form-label">Filtrar por Título:</label>
+      <input type="text" class="form-control" id="filtroTitulo" [(ngModel)]="filtro.titulo">
+    </div>
+    <div class="mb-3">
+      <label for="filtroData" class="form-label">Filtrar por Data:</label>
+      <input type="text" class="form-control" id="filtroData" [(ngModel)]="filtro.data">
+    </div>
+    <div class="mb-3">
+      <label for="filtroPreco" class="form-label">Filtrar por Preço:</label>
+      <input type="number" class="form-control" id="filtroPreco" [(ngModel)]="filtro.preco">
+    </div>
+  
+    <!-- Botões de Ação -->
+    <div class="mb-3">
+      <button class="btn btn-primary" (click)="aplicarFiltro()">Aplicar Filtro</button>
+      <button class="btn btn-secondary" (click)="limparFiltro()">Limpar Filtro</button>
+    </div>
+  
+    <!-- Lista de Anúncios -->
+    <a *ngFor="let anuncio of anunciosFiltrados" routerLink="/anuncios/{{anuncio.id}}" class="list-group-item list-group-item-action">
+      <div class="row mb-3">
+        <!-- Imagem à esquerda -->
+        <div class="col-md-3">
+          <img class="img-thumbnail" src="{{'http://localhost:3000/'+anuncio.foto}}" alt="Imagem do Anúncio">
+        </div>
+        <!-- Informações na div central -->
+        <div class="col-md-9">
+          <h5>{{anuncio.titulo}}</h5>
+          <p>Preço: {{anuncio.preco | currency}}</p>
+          <p>Data de Publicação: {{anuncio.dataCriacao | date:'dd/MM'}}</p>
+        </div>
+      </div>
+    </a>
+    <a routerLink="/create" class="btn btn-primary mt-3">Novo Anúncio</a>
+  </div>
+  

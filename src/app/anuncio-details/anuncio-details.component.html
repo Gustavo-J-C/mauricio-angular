@@ -1,0 +1,29 @@
+<!-- anuncios-details.html -->
+<div class="container mt-4">
+    <h2 class="d-flex justify-content-between align-items-center">
+        Detalhes do Anúncio
+        <a routerLink="/" class="btn btn-primary">Voltar</a>
+    </h2>
+    <div class="card">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title">{{anuncio.titulo}}</h5>
+                    <p class="card-text">Preço: {{anuncio.preco | currency}}</p>
+                    <p class="card-text">Localização: {{anuncio.localizacao}}</p>
+                    <p class="card-text">Condição: {{anuncio.estado}}</p>
+                    <p class="card-text">Categoria: {{anuncio.categoria}}</p>
+                    <p class="card-text">Descrição: {{anuncio.descricao}}</p>
+                    <p class="card-text">Data de Criação: {{anuncio.dataCriacao | date:'dd/MM'}}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="card-img-top mt-1" src="{{'http://localhost:3000/'+anuncio.foto}}" alt="Imagem do Anúncio">
+                <div class="d-flex justify-content-between mt-4 align-items-center">
+                    <button class="btn btn-primary" (click)="editarAnuncio()">Editar Anúncio</button>
+                    <button class="btn btn-danger" (click)="excluirAnuncio()">Excluir Anúncio</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
